@@ -1,0 +1,32 @@
+.question-options {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0.5rem 1rem;
+
+    label > input {
+        margin-right: 8px;
+    }
+}
+
+.question {
+    margin-bottom: 1.5rem;
+}
+
+.question__text {
+    margin-bottom: 0.25rem;
+}
+
+.question-text {
+    .MuiTextField-root {
+        padding: 0 1rem;
+
+        .MuiInputBase-root { 
+            background-color: var(--neutral-0);
+
+            fieldset {
+                border-color: var(--blue-800);
+            }
+        }
+    }
+}

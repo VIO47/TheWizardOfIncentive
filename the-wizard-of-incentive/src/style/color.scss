@@ -1,0 +1,59 @@
+:root {
+  /* Backgrounds */
+  --background: var(--blue-100);   /* Baby blue */
+  --surface: #FFFFFF;      /* Panels, cards */
+
+  /* Text */
+  --font-color: #0F172A;
+
+  --blue-900: #0A2A5B;
+  --blue-800: #0D3A7A;
+  --blue-700: #144E9E;
+  --blue-600: #1D6EC7;
+  --blue-500: #2E8AE6;
+  --blue-400: #56A7F2;
+  --blue-300: #8DCBFF;
+  --blue-200: #CDE8FF;
+  --blue-100: #E8F4FF;
+
+
+  /* Alias primary tokens for convenience */
+  --primary-100: var(--blue-100);
+  --primary-200: var(--blue-200);
+  --primary-300: var(--blue-300);
+  --primary-400: var(--blue-400);
+  --primary-500: var(--blue-500);
+  --primary-600: var(--blue-600);
+  --primary-700: var(--blue-700);
+  --primary-800: var(--blue-800);
+  --primary-900: var(--blue-900);
+
+  --yellow-100: #FFF8E6; /* soft cream */
+  --yellow-200: #FFEBC2; /* light golden sand */
+  --yellow-300: #FFD98A; /* light amber */
+  --yellow-400: #FFC45A; /* bright warm gold */
+  --yellow-500: #F4B23A; /* strong golden yellow */
+  --yellow-600: #E19823; /* vibrant amber-orange */
+  --yellow-700: #C97E18; /* deep rich golden orange */
+  --yellow-800: #A96912;
+  --yellow-900: #8A540A;
+
+
+  /* Functional Colors */
+  --success: #38D9A9;
+  --warning: #FACC15;
+  --error: #EF4444;
+
+  /* Neutrals */
+  --neutral-900: #0F172A;
+  --neutral-800: #1E293B;
+  --neutral-700: #334155;
+  --neutral-600: #475569;
+  --neutral-400: #94A3B8;
+  --neutral-200: #CBD5E1;
+  --neutral-100: #F1F5F9;
+  --neutral-0: #FFFFFF;
+
+  /* Borders */
+  --border-color: rgba(0, 0, 0, 0.08);
+}

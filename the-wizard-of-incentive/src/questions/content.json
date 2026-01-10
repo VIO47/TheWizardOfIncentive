@@ -1,0 +1,9 @@
+[
+    {
+       "id": 1,
+       "step": 1,
+       "type": "text",
+        "text": "What is the main type of information you want to collect from workers?",
+        "subtext": "The type of information you aim to collect influences how the task should be structured and how workers should be compensated. Consider the kind of output that best aligns with your goals, such as text responses, labeled data, decisions, creative input, or feedback."
+    }
+]
