@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "homepage": "https://vio47.github.io/TheWizardOfIncentive/",
+  "base": "/TheWizardOfIncentive/src/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
