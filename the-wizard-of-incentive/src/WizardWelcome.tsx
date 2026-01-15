@@ -1,11 +1,9 @@
-import { Switch, FormControlLabel, Button } from "@mui/material";
+import { Button } from "@mui/material";
 import WizardImg from "./assets/wizard.png";
 import "@style/wizard-welcome.scss";
 export default function WizardWelcome({
-  setExtraGuidance,
   startWizard,
 }: {
-  setExtraGuidance: (value: boolean) => void;
   startWizard: () => void;
 }) {
   return (
@@ -20,7 +18,7 @@ export default function WizardWelcome({
           to help you understand and optimize your incentive structures.
         </p>
         <div>
-          <p>
+          {/* <p>
             Are you new to this? Then the tool can provide extra guidance to
             help you get started.
           </p>
@@ -30,7 +28,7 @@ export default function WizardWelcome({
               <Switch onChange={(e) => setExtraGuidance(e.target.checked)} />
             }
             label="I want your help!"
-          />
+          /> */}
           <p>Ready to begin?</p>
           <Button variant="contained" onClick={startWizard}>
             Start

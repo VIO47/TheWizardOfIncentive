@@ -19,7 +19,7 @@
 
 .question-text {
     .MuiTextField-root {
-        padding: 0 1rem;
+        max-width: 700px;
 
         .MuiInputBase-root { 
             background-color: var(--neutral-0);

@@ -3,18 +3,20 @@ import { useState } from "react";
 import "@style/question.scss";
 
 export default function QuestionRadio({
-  props,
+  question,
   useExtra,
+  onAnswerChange,
 }: {
-  props: QuestionRadioProps;
+  question: QuestionRadioProps;
   useExtra?: boolean;
+  onAnswerChange: (questionId: number, answer: string) => void;
 }) {
-  const { question } = props;
   const [answer, setAnswer] = useState<string>("");
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setAnswer(e.target.value);
-    question.onAnswerChange(question.id, e.target.value);
+    onAnswerChange(question.id, e.target.value);
   }
+  const [showOtherInput, setShowOtherInput] = useState(false);
 
   return (
     <div className="question question-radio">
@@ -35,7 +37,32 @@ export default function QuestionRadio({
             {option}
           </label>
         ))}
+        {question.other && (
+          <label>
+            <input
+              type="radio"
+              name={`question-${question.id}`}
+              value="other"
+              checked={answer === "other"}
+              onChange={(e) => {
+                handleChange(e);
+                setShowOtherInput(e.target.value === "other");
+              }}
+            />
+            {"Other"}
+          </label>
+        )}
       </div>
+      {showOtherInput && (
+        <input
+          type="text"
+          value={answer === "other" ? answer : ""}
+          onChange={(e) => {
+            setAnswer(e.target.value);
+            question.onAnswerChange(question.id, e.target.value);
+          }}
+        />
+      )}
     </div>
   );
 }

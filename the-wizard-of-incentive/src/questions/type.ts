@@ -23,6 +23,7 @@ type BaseQuestion<TType extends QuestionType> = {
   showCondition?: ShowCondition;
   onAnswerChange: (questionId: number, answer: AnswerMap[TType]) => void;
   other?: boolean;
+  answer?: AnswerMap[TType];
 };
 
 type ShowCondition = {
@@ -47,7 +48,7 @@ type GenericQuestion =
   | QuestionRadioProps
   | QuestionCheckboxProps;
 
-export type { GenericQuestion, QuestionTextProps, QuestionRadioProps, QuestionCheckboxProps, Answer };
+export type { GenericQuestion, QuestionTextProps, QuestionRadioProps, QuestionCheckboxProps, Answer, BaseQuestion };
 
 export { QUESTION_TYPE };
 

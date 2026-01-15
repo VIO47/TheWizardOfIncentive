@@ -6,13 +6,18 @@ import "@style/question.scss";
 export default function QuestionText({
   question,
   useExtra,
-}: QuestionTextProps & { useExtra?: boolean }) {
+  onAnswerChange,
+}: {
+  question: QuestionTextProps;
+  useExtra?: boolean;
+  onAnswerChange: (questionId: number, answer: string) => void;
+}) {
   const [answer, setAnswer] = useState<string>("");
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setAnswer(e.target.value);
     debounce(() => {
-      question.onAnswerChange(question.id, e.target.value);
+      onAnswerChange(question.id, e.target.value);
     }, 500)();
   }
 

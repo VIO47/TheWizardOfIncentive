@@ -1,5 +1,4 @@
 import { Button } from "@mui/material";
-import questionList from "./questions/content.json";
 import QuestionText from "./questions/question_text";
 import QuestionRadio from "./questions/question_radio";
 import QuestionCheckbox from "./questions/question_checkbox";
@@ -8,10 +7,12 @@ export default function WizardSteps({
   onComplete,
   extraGuidance,
   setAnswer,
+  questions,
 }: {
   onComplete: () => void;
   extraGuidance: boolean;
   setAnswer: (questionId: number, answer: Answer) => void;
+  questions: GenericQuestion[];
 }) {
   function handleNext() {
     // Logic to handle moving to the next step
@@ -37,14 +38,14 @@ export default function WizardSteps({
   }
   return (
     <div className="wizard-steps">
-      {questionList.map((question) =>
+      {questions.map((question) =>
         ((question) => {
           switch (question.type) {
             case "text":
               return (
                 <QuestionText
                   key={question.id}
-                  {...question}
+                  question={question}
                   useExtra={extraGuidance}
                   onAnswerChange={setTextAnswer}
                 />
@@ -53,7 +54,7 @@ export default function WizardSteps({
               return (
                 <QuestionRadio
                   key={question.id}
-                  {...question}
+                  question={question}
                   useExtra={extraGuidance}
                   onAnswerChange={setRadioAnswer}
                 />
@@ -62,7 +63,7 @@ export default function WizardSteps({
               return (
                 <QuestionCheckbox
                   key={question.id}
-                  {...question}
+                  question={question}
                   useExtra={extraGuidance}
                   onAnswerChange={setCheckboxAnswer}
                 />
