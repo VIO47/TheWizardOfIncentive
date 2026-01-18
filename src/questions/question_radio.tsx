@@ -11,7 +11,7 @@ export default function QuestionRadio({
   useExtra?: boolean;
   onAnswerChange: (questionId: number, answer: string) => void;
 }) {
-  const [answer, setAnswer] = useState<string>("");
+  const [answer, setAnswer] = useState<string>(question.answer || "");
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setAnswer(e.target.value);
     onAnswerChange(question.id, e.target.value);

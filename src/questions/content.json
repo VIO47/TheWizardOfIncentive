@@ -36,6 +36,7 @@
         "type": "text",
         "step": 3, 
         "text": "What is your total budget for this job?",
+        "rows": 1,
         "showCondition": {
             "questionId": 3,
             "answer": [
@@ -77,6 +78,7 @@
         "type": "text",
         "step": 5, 
         "text": "What is the amount of money you will be awarding?",
+        "rows": 1,
         "showCondition": {
             "questionId": 6,
             "answer": [
@@ -188,7 +190,8 @@
         "id": 15,
         "type": "text",
         "step": 9, 
-        "text": "What pay-rate will you use?"
+        "text": "What pay-rate will you use?",
+        "rows": 1
     },
     {
         "id": 16,
@@ -221,15 +224,11 @@
     },
     {
         "id": 18,
-        "type": "radio",
+        "type": "text",
         "step": 11, 
         "text": "Approximately how large will the bonus be?",
         "extra": "Bonus size should reflect the additional effort or uncertainty involved.",
-        "options": [
-            "On worker performance",
-            "On luck with rewards being given randomly",
-            "On completion, whether they finish the task or not"
-        ],
+        "rows": 1,
         "showCondition": {
             "questionId": 17,
             "answer": [
@@ -312,6 +311,7 @@
         "step": 14, 
         "text": "What sum will you substract as penalty?",
         "extra": "Penalties should remain proportional to bonuses and base pay.",
+        "rows": 1,
         "showCondition": {
             "questionId": 22,
             "answer": [
@@ -324,7 +324,6 @@
         "type": "text",
         "step": 14, 
         "text": "How will penalties be applied? ",
-        "rows": 1,
         "showCondition": {
             "questionId": 22,
             "answer": [

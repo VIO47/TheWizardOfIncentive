@@ -11,7 +11,7 @@ export default function QuestionCheckbox({
   useExtra?: boolean;
   onAnswerChange: (questionId: number, answer: string[]) => void;
 }) {
-  const [answer, setAnswer] = useState<string[]>([]);
+  const [answer, setAnswer] = useState<string[]>(question.answer || []);
 
   function handleCheckbox(e: ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
