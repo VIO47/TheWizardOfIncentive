@@ -4,6 +4,7 @@ import QuestionRadio from "./questions/question_radio";
 import QuestionCheckbox from "./questions/question_checkbox";
 import type { Answer, GenericQuestion } from "./questions/type";
 import { useMemo } from "react";
+import { saveExperimentResult } from "./WizardActions";
 export default function WizardSteps({
   step,
   setStep,
@@ -28,6 +29,10 @@ export default function WizardSteps({
 
   function handleFinish() {
     onComplete();
+    saveExperimentResult(
+      extraGuidance ? "prescriptive" : "descriptive",
+      questions.map((q) => ({ id: q.id, answer: q.answer }))
+    );
   }
   function setTextAnswer(questionId: number, answer: string) {
     // Logic to set the answer for a specific question

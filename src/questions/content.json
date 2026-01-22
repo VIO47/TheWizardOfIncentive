@@ -191,7 +191,13 @@
         "type": "text",
         "step": 9, 
         "text": "What pay-rate will you use?",
-        "rows": 1
+        "rows": 1,
+        "showCondition": {
+            "questionId": 5,
+            "answer": [
+                "Pay-rate that translates in varying income"
+            ]
+        }
     },
     {
         "id": 16,

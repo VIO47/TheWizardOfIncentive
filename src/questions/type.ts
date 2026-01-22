@@ -48,7 +48,20 @@ type GenericQuestion =
   | QuestionRadioProps
   | QuestionCheckboxProps;
 
-export type { GenericQuestion, QuestionTextProps, QuestionRadioProps, QuestionCheckboxProps, Answer, BaseQuestion };
+  type StoredAnswer = {
+  questionId: number;
+  answer: string | string[];
+};
+
+type ExperimentResult = {
+  experimentId: string;
+  experimentType: "descriptive" | "prescriptive" | "none";
+  timestamp: string;
+  answers: StoredAnswer[];
+};
+
+
+export type { GenericQuestion, QuestionTextProps, QuestionRadioProps, QuestionCheckboxProps, Answer, BaseQuestion, StoredAnswer, ExperimentResult };
 
 export { QUESTION_TYPE };
 
