@@ -11,7 +11,7 @@ export default function Wizard() {
   const version = useQueryParam("ver");
 
   const extraGuidance = useMemo(() => {
-    return version == "dr";
+    return version == "pr";
   }, [version]);
 
   function useQueryParam(name: string) {
