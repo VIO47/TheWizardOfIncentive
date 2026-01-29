@@ -4,7 +4,8 @@ import { v4 as uuidv4 } from "uuid";
 
 async function saveExperimentResult(
   experimentType: "descriptive" | "prescriptive",
-  questions: { id: number; answer?: string | string[] }[]
+  questions: { id: number; answer?: string | string[] }[],
+  description: string
 ) {
   const experimentRunId = uuidv4();
   const experimentId = uuidv4();
@@ -18,6 +19,7 @@ async function saveExperimentResult(
         questionId: q.id,
         answer: q.answer,
       })),
+    description: description,
   };
 
   await setDoc(doc(db, "experiments", experimentRunId), payload);

@@ -31,7 +31,8 @@ export default function WizardSteps({
     onComplete();
     saveExperimentResult(
       extraGuidance ? "prescriptive" : "descriptive",
-      questions.map((q) => ({ id: q.id, answer: q.answer }))
+      questions.map((q) => ({ id: q.id, answer: q.answer })),
+      ""
     );
   }
   function setTextAnswer(questionId: number, answer: string) {

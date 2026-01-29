@@ -14,21 +14,18 @@ export default function WizardWelcome({
       <div className="wizard-welcome__text">
         <h3>Welcome to The Wizard of Incentive!</h3>
         <p>
-          This interactive wizard will guide you through a series of questions
-          to help you understand and optimize your incentive structures.
+          Designing monetary incentives for crowdsourcing tasks can involve many
+          decisions, often without clear guidelines or reference points. This
+          tool is intended to support you during this process by making the key
+          elements of incentive design more visible and easier to reflect on.
+        </p>
+        <p>
+          By guiding you through a series of structured questions, the tool
+          helps you think through how and why you compensate workers, whether
+          you are designing an incentive scheme from scratch or reviewing an
+          existing one.
         </p>
         <div>
-          {/* <p>
-            Are you new to this? Then the tool can provide extra guidance to
-            help you get started.
-          </p>
-
-          <FormControlLabel
-            control={
-              <Switch onChange={(e) => setExtraGuidance(e.target.checked)} />
-            }
-            label="I want your help!"
-          /> */}
           <p>Ready to begin?</p>
           <Button variant="contained" onClick={startWizard}>
             Start
