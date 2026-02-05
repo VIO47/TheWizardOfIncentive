@@ -2,6 +2,7 @@ const QUESTION_TYPE = {
   TEXT: "text",
   CHECKBOX: "checkbox",
   RADIO: "radio",
+  MONEY: "money",
 } as const;
 
 type QuestionType = typeof QUESTION_TYPE[keyof typeof QUESTION_TYPE];
@@ -10,6 +11,7 @@ type AnswerMap = {
   [QUESTION_TYPE.TEXT]: string;
   [QUESTION_TYPE.RADIO]: string;
   [QUESTION_TYPE.CHECKBOX]: string[];
+  [QUESTION_TYPE.MONEY]: string;
 };
 
 type Answer = AnswerMap[keyof AnswerMap];
@@ -43,10 +45,13 @@ type QuestionCheckboxProps = BaseQuestion<typeof QUESTION_TYPE.CHECKBOX> & {
   options: string[];
 };
 
+type QuestionMoneyProps = BaseQuestion<typeof QUESTION_TYPE.MONEY>;
+
 type GenericQuestion =
   | QuestionTextProps
   | QuestionRadioProps
-  | QuestionCheckboxProps;
+  | QuestionCheckboxProps
+  | QuestionMoneyProps;
 
   type StoredAnswer = {
   questionId: number;
@@ -61,7 +66,6 @@ type ExperimentResult = {
 };
 
 
-export type { GenericQuestion, QuestionTextProps, QuestionRadioProps, QuestionCheckboxProps, Answer, BaseQuestion, StoredAnswer, ExperimentResult };
-
+export type { GenericQuestion, QuestionTextProps, QuestionRadioProps, QuestionCheckboxProps, QuestionMoneyProps, Answer, BaseQuestion, StoredAnswer, ExperimentResult };
 export { QUESTION_TYPE };
 

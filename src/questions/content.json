@@ -3,15 +3,15 @@
        "id": 1,
        "step": 1,
        "type": "text",
-        "text": "What is the main type of information you want to collect from workers?",
-        "extra": "The type of information you aim to collect influences how the task should be structured and how workers should be compensated. Consider the kind of output that best aligns with your goals, such as text responses, labeled data, decisions, creative input, or feedback."
+        "text": "What is the type of information you want to collect from participants?",
+        "extra": "Start by deciding what information you want to collect. Different types of output, such as text responses, labeled data, decisions, creative input, or feedback, determine both the task structure and the compensation model. Clearly defining the desired output helps align incentives with the task goals."
     },
     {
         "id": 2,
-        "type": "radio",
+        "type": "checkbox",
         "step": 2,
         "text": "What do you hope this incentive will primarily help with?",
-        "extra": "Incentives are used to encourage different outcomes, such as meeting platform requirements, increasing participation, or motivating higher-quality work. Clarifying what you want to achieve helps align the incentive structure with the behavior you aim to support.",
+        "extra": "Define the outcome you want first. Clearly stating your objective upfront ensures the incentive structure actively guides participants toward the desired outcome rather than passively rewarding activity.",
         "options": [
             "Meet minimum platform requirements for publishing",
             "Increase participation",
@@ -24,7 +24,7 @@
         "type": "radio",
         "step": 3, 
         "text": "Do you have a predefined budget?",
-        "extra": "Compensation decisions are often constrained by an overall budget. Making this constraint explicit early helps avoid incentive designs that are unrealistic or difficult to sustain at scale.",
+        "extra": "Determine upfront whether compensation is budget-constrained. When a fixed budget applies, state it explicitly early in the design process to prevent incentive models that are unrealistic or unsustainable at scale.",
         "options": [
             "Yes, I have a fixed total budget",
             "Yes, I have a rough estimate of total budget",
@@ -33,7 +33,7 @@
     },
     {
         "id": 4,
-        "type": "text",
+        "type": "money",
         "step": 3, 
         "text": "What is your total budget for this job?",
         "rows": 1,
@@ -50,7 +50,7 @@
         "type": "radio",
         "step": 4, 
         "text": "Which strategy best fits your scenario?",
-        "extra": "Every task requires a base payment. Choosing a payment strategy depends on how predictable task duration and effort are.",
+        "extra": "Every task must include a base payment. Start by evaluating how predictable the task's duration and effort are. Use this assessment to determine the appropriate payment strategy.",
         "options": [
             "Fixed sum of money on completion time",
             "Pay-rate that translates in varying income"
@@ -61,7 +61,7 @@
         "type": "radio",
         "step": 5, 
         "text": "How will you determine the amount you will award as fixed base pay?",
-        "extra": "Fixed payments are simple to implement but should still reflect the effort required to complete the task. ",
+        "extra": "Fixed payments are easy to implement, but you must ensure they accurately reflect the effort required to complete the task.",
         "options": [
             "Just use a flat amount of money",
             "Estimate pay based on expected completion time"
@@ -75,7 +75,7 @@
     },
         {
         "id": 7,
-        "type": "text",
+        "type": "money",
         "step": 5, 
         "text": "What is the amount of money you will be awarding?",
         "rows": 1,
@@ -88,13 +88,13 @@
     },
     {
         "id": 8,
-        "type": "radio",
+        "type": "checkbox",
         "step": 6, 
         "text": "How will you estimate how long it takes to complete the task?",
         "extra": "Estimating task duration helps ensure fair compensation.",
         "options": [
-            "Make an informed estimate using heuristics",
-            "Run smaller pilot studies to see how long it actually takes people to complete"
+            "Estimate completion time using heuristics based on similar tasks",
+            "Run a small pilot with real participants to measure completion time"
         ],
         "showCondition": {
             "questionId": 6,
@@ -108,12 +108,12 @@
         "type": "text",
         "step": 7, 
         "text": "How many pilot studies do you plan to run?",
-        "extra": "Pilot studies can reveal variability in completion time and help refine compensation. Multiple small studies can provide a more reliable estimate, especially when worker behavior varies.",
+        "extra": "Plan multiple small pilot studies to capture variability in completion time. Use the results to refine compensation, especially when worker behavior is not uniform.",
         "rows": 1,
         "showCondition": {
             "questionId": 8,
             "answer": [
-                "Run smaller pilot studies to see how long it actually takes people to complete"
+                "Run a small pilot with real participants to measure completion time"
             ]
         }
     },
@@ -121,12 +121,12 @@
         "id": 10,
         "type": "text",
         "step": 7, 
-        "text": "How many people do you plan to test with?",
+        "text": "With how many participants do you plan on testing?",
         "rows": 1,
         "showCondition": {
             "questionId": 8,
             "answer": [
-                "Run smaller pilot studies to see how long it actually takes people to complete"
+                "Run a small pilot with real participants to measure completion time"
             ]
         }
     },
@@ -135,11 +135,11 @@
         "type": "text",
         "step": 7, 
         "text": "Which heuristics will you use to estimate task completion?",
-        "extra": "Combining multiple heuristics may improve the accuracy of your estimates. ",
+        "extra": "Select explicit heuristics that translate effort into a concrete monetary amount. Avoid high-level guesswork and combine multiple heuristics to improve accuracy.",
         "showCondition": {
             "questionId": 8,
             "answer": [
-                "Make an informed estimate using heuristics"
+                "Estimate completion time using heuristics based on similar tasks"
             ]
         }
     },
@@ -148,7 +148,7 @@
         "type": "radio",
         "step": 6, 
         "text": "What will you use as reference to determine the pay rate?",
-        "extra": "Using an external reference can help ground compensation decisions.",
+        "extra": "Base the pay rate on a concrete external benchmark, not intuition.",
         "options": [
             "Use the suggested amount provided by the crowdsourcing platform",
             "Base the pay on hourly wages",
@@ -157,7 +157,7 @@
         "showCondition": {
             "questionId": 6,
             "answer": [
-                "Estimate the pay based on completion time"
+                "Estimate completion time using heuristics based on similar tasks"
             ]
         }
     },
@@ -166,7 +166,7 @@
         "type": "text",
         "step": 8, 
         "text": "Whose country's minimum wage will you use?",
-        "extra": "Minimum wage standards vary across regions. Reflecting on this can help establish a fair baseline.",
+        "extra": "Choose the country whose minimum wage you will use as a pay floor. Apply it consistently to establish a fair and transparent baseline across tasks.",
         "showCondition": {
             "questionId": 12,
             "answer": [
@@ -188,9 +188,10 @@
     },
     {
         "id": 15,
-        "type": "text",
+        "type": "money",
         "step": 9, 
-        "text": "What pay-rate will you use?",
+        "text": "What hourly pay-rate will you use?",
+        "extra" : "Choose an hourly rate by combining the external benchmark with an estimate of task effort, complexity, and quality requirements. Avoid flat or arbitrary rates that do not scale with expectations.",
         "rows": 1,
         "showCondition": {
             "questionId": 5,
@@ -204,7 +205,7 @@
         "type": "radio",
         "step": 10, 
         "text": "Will you supplement the base pay with bonuses?",
-        "extra": "Bonuses are optional but can influence effort and completion.",
+        "extra": "Decide whether base pay alone sufficiently motivates the desired behavior. If not, introduce bonuses to influence effort, speed, or task completion.",
         "options": [
             "Yes",
             "No"
@@ -215,7 +216,7 @@
         "type": "radio",
         "step": 11, 
         "text": "On what will you be basing your bonus awarding?",
-        "extra": "Bonuses can reward different types of behavior. Choosing the right basis for bonuses helps align incentives with desired outcomes.",
+        "extra": "Select a concrete basis for awarding bonuses. Use it to directly align incentives with your intended outcome. Avoid vague or subjective criteria that do not clearly connect to the desired behavior.",
         "options": [
             "On worker performance",
             "On luck with rewards being given randomly",
@@ -230,10 +231,10 @@
     },
     {
         "id": 18,
-        "type": "text",
+        "type": "money",
         "step": 11, 
         "text": "Approximately how large will the bonus be?",
-        "extra": "Bonus size should reflect the additional effort or uncertainty involved.",
+        "extra": "Determine the bonus amount based on the extra effort or uncertainty required beyond the base task. Ensure the bonus is substantial enough to motivate the desired behavior without being so large that it encourages gaming or overspending.",
         "rows": 1,
         "showCondition": {
             "questionId": 17,
@@ -248,7 +249,7 @@
         "type": "text",
         "step": 11, 
         "text": "What strategy will you use to implement luck-based bonuses?",
-        "extra": "Random rewards can trigger a different form of motivation than traditional performance-based ones. They can be implemented similar to a lottery or every worker has a chance of receiving it.",
+        "extra": "Decide whether bonuses will be awarded via a lottery, random draw, or probabilistic payout. Specify eligibility criteria, odds of winning, and payout amounts, and communicate these rules clearly to workers.",
         "showCondition": {
             "questionId": 17,
             "answer": [
@@ -261,7 +262,7 @@
         "type": "checkbox",
         "step": 12, 
         "text": "How will you measure worker performance?",
-        "extra": "Clear performance metrics are essential when bonuses depend on quality.",
+        "extra": "Identify specific, measurable criteria to assess worker performance.",
         "options": [
             "Accuracy - how many correct answers have been given",
             "Proprietary currency or score used in job",
@@ -280,7 +281,7 @@
         "type": "checkbox",
         "step": 12, 
         "text": "How will performance determine the bonus amount?",
-        "extra": "The way performance translates into payment affects worker behavior.",
+        "extra": "Create an explicit, deterministic formula or mapping rule that converts performance metrics into bonus amounts. Apply it consistently across all workers to ensure fair compensation and reduce implementation complexity.",
         "options": [
             "Fixed amount if a certain threshold is passed",
             "Proportional to score if certain threshold is passed",
@@ -299,7 +300,7 @@
         "type": "radio",
         "step": 13, 
         "text": "Do you think penalties are useful in your case?",
-        "extra": "Penalties can discourage cheating but may also discourage participation if overused.",
+        "extra": "Introduce penalties only when there is a clear risk of cheating or low-quality behavior. Calibrate them carefully to avoid reducing participation.",
         "options": [
             "Yes",
             "No"
@@ -316,7 +317,7 @@
         "type": "text",
         "step": 14, 
         "text": "What sum will you substract as penalty?",
-        "extra": "Penalties should remain proportional to bonuses and base pay.",
+        "extra": "Limit penalties so they remain proportional to the task's base pay and bonuses. Penalties should deter unwanted behavior without becoming harmful.",
         "rows": 1,
         "showCondition": {
             "questionId": 22,
@@ -342,7 +343,7 @@
         "type": "radio",
         "step": 15, 
         "text": "How will you communicate your reward structure to workers?",
-        "extra": "Transparent communication about compensation builds trust and shapes worker expectations. ",
+        "extra": "Communicate the complete reward structure clearly and upfront. Transparency around base pay, bonuses, and penalties is essential for trust and predictable worker behavior.",
         "options": [
             "I will not tell them they will get something",
             "I will tell them only when it happens (when bonus is given, when the pay is given etc)",

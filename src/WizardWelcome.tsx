@@ -21,9 +21,9 @@ export default function WizardWelcome({
         </p>
         <p>
           By guiding you through a series of structured questions, the tool
-          helps you think through how and why you compensate workers, whether
-          you are designing an incentive scheme from scratch or reviewing an
-          existing one.
+          helps you think through how and why you compensate participants,
+          whether you are designing an incentive scheme from scratch or
+          reviewing an existing one.
         </p>
         <div>
           <p>Ready to begin?</p>

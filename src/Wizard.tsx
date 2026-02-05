@@ -4,6 +4,7 @@ import WizardSteps from "./WizardSteps";
 import WizardSummary from "./WizardSummary";
 import type { Answer, GenericQuestion } from "./questions/type";
 import questionList from "./questions/content.json";
+import { saveExperimentResult } from "./WizardActions";
 
 export default function Wizard() {
   const [step, setStep] = useState(0);
@@ -24,12 +25,16 @@ export default function Wizard() {
         ({
           ...q,
           answer: undefined as Answer | undefined,
-        }) as GenericQuestion
-    )
+        }) as GenericQuestion,
+    ),
   );
 
   function onComplete() {
     setIsDone(true);
+    saveExperimentResult(
+      extraGuidance ? "prescriptive" : "descriptive",
+      questions.map((q) => ({ id: q.id, answer: q.answer })),
+    );
   }
 
   function start() {
@@ -50,9 +55,12 @@ export default function Wizard() {
         if (q.type === "checkbox" && Array.isArray(answer)) {
           return { ...q, answer };
         }
+        if (q.type === "money" && typeof answer === "string") {
+          return { ...q, answer };
+        }
         // fallback: do not update if types mismatch
         return q;
-      })
+      }),
     );
   }
 

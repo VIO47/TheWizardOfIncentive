@@ -2,9 +2,9 @@ import { Button } from "@mui/material";
 import QuestionText from "./questions/question_text";
 import QuestionRadio from "./questions/question_radio";
 import QuestionCheckbox from "./questions/question_checkbox";
+import QuestionMoney from "./questions/question_money";
 import type { Answer, GenericQuestion } from "./questions/type";
 import { useMemo } from "react";
-import { saveExperimentResult } from "./WizardActions";
 export default function WizardSteps({
   step,
   setStep,
@@ -29,11 +29,6 @@ export default function WizardSteps({
 
   function handleFinish() {
     onComplete();
-    saveExperimentResult(
-      extraGuidance ? "prescriptive" : "descriptive",
-      questions.map((q) => ({ id: q.id, answer: q.answer })),
-      ""
-    );
   }
   function setTextAnswer(questionId: number, answer: string) {
     // Logic to set the answer for a specific question
@@ -47,10 +42,15 @@ export default function WizardSteps({
     // Logic to set the answer for a specific question
     setAnswer(questionId, answer);
   }
+  function setMoneyAnswer(questionId: number, answer: string) {
+    // Logic to set the answer for a specific question
+    setAnswer(questionId, answer);
+    console.log("Money answer set:", questionId, answer);
+  }
 
   function isQuestionVisible(
     question: GenericQuestion,
-    allQuestions: GenericQuestion[]
+    allQuestions: GenericQuestion[],
   ): boolean {
     if (!question.showCondition) return true;
 
@@ -66,7 +66,7 @@ export default function WizardSteps({
 
     if (Array.isArray(given)) {
       return given.some((a) =>
-        Array.isArray(answer) ? answer.includes(a) : a === answer
+        Array.isArray(answer) ? answer.includes(a) : a === answer,
       );
     }
 
@@ -97,7 +97,7 @@ export default function WizardSteps({
       }
 
       const hasVisibleQuestions = questions.some(
-        (q) => q.step === s && isQuestionVisible(q, questions)
+        (q) => q.step === s && isQuestionVisible(q, questions),
       );
 
       if (hasVisibleQuestions) {
@@ -145,10 +145,19 @@ export default function WizardSteps({
                   onAnswerChange={setCheckboxAnswer}
                 />
               );
+            case "money":
+              return (
+                <QuestionMoney
+                  key={question.id}
+                  question={question}
+                  useExtra={extraGuidance}
+                  onAnswerChange={setMoneyAnswer}
+                />
+              );
             default:
               return null;
           }
-        })(question as GenericQuestion)
+        })(question as GenericQuestion),
       )}
       <div className="wizard-app__controls">
         {step > 1 && <Button onClick={handleBack}>Back</Button>}
