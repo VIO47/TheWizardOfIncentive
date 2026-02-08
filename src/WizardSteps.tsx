@@ -45,7 +45,6 @@ export default function WizardSteps({
   function setMoneyAnswer(questionId: number, answer: string) {
     // Logic to set the answer for a specific question
     setAnswer(questionId, answer);
-    console.log("Money answer set:", questionId, answer);
   }
 
   function isQuestionVisible(
