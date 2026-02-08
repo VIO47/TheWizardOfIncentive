@@ -21,5 +21,6 @@ async function saveExperimentResult(
   };
 
   await setDoc(doc(db, "experiments", experimentRunId), payload);
+  return experimentId;
 }
 export { saveExperimentResult };

@@ -29,12 +29,16 @@ export default function Wizard() {
     ),
   );
 
-  function onComplete() {
+  const [experimentId, setExperimentId] = useState<string | undefined>(
+    undefined,
+  );
+  async function onComplete() {
     setIsDone(true);
-    saveExperimentResult(
+    const id = await saveExperimentResult(
       extraGuidance ? "prescriptive" : "descriptive",
       questions.map((q) => ({ id: q.id, answer: q.answer })),
     );
+    setExperimentId(id);
   }
 
   function start() {
@@ -67,7 +71,7 @@ export default function Wizard() {
   return (
     <div className="wizard-app">
       {isDone ? (
-        <WizardSummary questions={questions} />
+        <WizardSummary questions={questions} experimentId={experimentId} />
       ) : step === 0 ? (
         <WizardWelcome startWizard={start} />
       ) : (
