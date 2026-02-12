@@ -10,7 +10,7 @@ export default function Wizard() {
   const [step, setStep] = useState(0);
   const [isDone, setIsDone] = useState(false);
   const version = useQueryParam("ver");
-
+  const [startTime, setStartTime] = useState<number | null>(null);
   const extraGuidance = useMemo(() => {
     return version == "pr";
   }, [version]);
@@ -42,6 +42,7 @@ export default function Wizard() {
   }
 
   function start() {
+    setStartTime(Date.now());
     setStep(1);
   }
 

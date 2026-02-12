@@ -5,13 +5,15 @@ import { v4 as uuidv4 } from "uuid";
 async function saveExperimentResult(
   experimentType: "descriptive" | "prescriptive",
   questions: { id: number; answer?: string | string[] }[],
+  startTime: number,
 ) {
   const experimentRunId = uuidv4();
   const experimentId = uuidv4();
   const payload = {
     experimentId,
     experimentType,
-    timestamp: new Date().toISOString(),
+    endTime: new Date().toISOString(),
+    startTime,
     answers: questions
       .filter((q) => q.answer !== undefined)
       .map((q) => ({
