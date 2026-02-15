@@ -44,7 +44,6 @@ export default function Wizard() {
     );
 
     console.log("Save finished");
-
     setIsDone(true);
   }
 

@@ -1,5 +1,5 @@
-import { db } from "./firebase";
 import { setDoc, doc } from "firebase/firestore";
+import { experimentsCollection } from "./firestore";
 
 async function saveExperimentResult(
   experimentId: string,
@@ -18,7 +18,7 @@ async function saveExperimentResult(
     })),
   };
 
-  setDoc(doc(db, "experiments", experimentId), payload)
+  await setDoc(doc(experimentsCollection, experimentId), payload)
     .then(() => console.log("Write resolved"))
     .catch((err) => console.error("Write error", err));
 }
