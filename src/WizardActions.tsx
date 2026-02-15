@@ -1,5 +1,5 @@
-import { setDoc, doc, getDoc } from "firebase/firestore";
-import { db, experimentsCollection } from "./firestore";
+import { setDoc, doc } from "firebase/firestore";
+import { experimentsCollection } from "./firestore";
 
 async function saveExperimentResult(
   experimentId: string,
@@ -18,11 +18,6 @@ async function saveExperimentResult(
     })),
   };
 
-  const x = await setDoc(doc(experimentsCollection, experimentId), payload)
-    .then(() => console.log("Write resolved"))
-    .catch((err) => console.error("Write error", err));
-  const snap = await getDoc(doc(db, "experiments", experimentId));
-  console.log("Exists?", snap.exists());
-  return x;
+  return await setDoc(doc(experimentsCollection, experimentId), payload);
 }
 export { saveExperimentResult };

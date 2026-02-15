@@ -34,8 +34,6 @@ export default function Wizard() {
   );
 
   async function onComplete() {
-    console.log("Start complete");
-
     await saveExperimentResult(
       experimentId,
       extraGuidance ? "prescriptive" : "descriptive",
@@ -43,7 +41,6 @@ export default function Wizard() {
       startTime!,
     );
 
-    console.log("Save finished");
     setIsDone(true);
   }
 
