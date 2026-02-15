@@ -5,23 +5,22 @@ import { v4 as uuidv4 } from "uuid";
 async function saveExperimentResult(
   experimentType: "descriptive" | "prescriptive",
   questions: { id: number; answer?: string | string[] }[],
-  startTime: number,
+  startTime: Date,
 ) {
   const experimentRunId = uuidv4();
   const experimentId = uuidv4();
   const payload = {
     experimentId,
     experimentType,
-    endTime: new Date().toISOString(),
     startTime,
-    answers: questions
-      .filter((q) => q.answer !== undefined)
-      .map((q) => ({
-        questionId: q.id,
-        answer: q.answer,
-      })),
+    endTime: new Date(),
+    answers: questions.map((q) => ({
+      questionId: q.id,
+      answer: q.answer || "",
+    })),
   };
 
+  console.log("Saving experiment result:", payload);
   await setDoc(doc(db, "experiments", experimentRunId), payload);
   return experimentId;
 }

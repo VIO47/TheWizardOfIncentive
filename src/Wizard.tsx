@@ -10,7 +10,7 @@ export default function Wizard() {
   const [step, setStep] = useState(0);
   const [isDone, setIsDone] = useState(false);
   const version = useQueryParam("ver");
-  const [startTime, setStartTime] = useState<number | null>(null);
+  const [startTime, setStartTime] = useState<Date | null>(null);
   const extraGuidance = useMemo(() => {
     return version == "pr";
   }, [version]);
@@ -37,12 +37,13 @@ export default function Wizard() {
     const id = await saveExperimentResult(
       extraGuidance ? "prescriptive" : "descriptive",
       questions.map((q) => ({ id: q.id, answer: q.answer })),
+      startTime!,
     );
     setExperimentId(id);
   }
 
   function start() {
-    setStartTime(Date.now());
+    setStartTime(new Date());
     setStep(1);
   }
 
