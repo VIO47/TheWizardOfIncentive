@@ -21,6 +21,7 @@ async function saveExperimentResult(
 
   try {
     await addDoc(collection(db, "experiments"), payload);
+    console.log("Done saving experiment result:", payload);
   } catch (e) {
     console.error(e);
   }
