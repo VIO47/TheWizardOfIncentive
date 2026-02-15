@@ -1,6 +1,6 @@
 import "@style/App.scss";
 import Wizard from "./Wizard";
-
+import { exportExperimentsToExcel } from "./export";
 function App() {
   return (
     <div className="App">
@@ -10,6 +10,9 @@ function App() {
           <div className="wizard-app__content">
             <Wizard />
           </div>
+          {import.meta.env.DEV && (
+            <button onClick={exportExperimentsToExcel}>Export Data</button>
+          )}
         </div>
       </div>
     </div>
