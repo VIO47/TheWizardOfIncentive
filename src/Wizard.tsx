@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import WizardWelcome from "./WizardWelcome";
 import WizardSteps from "./WizardSteps";
 import WizardSummary from "./WizardSummary";
@@ -7,6 +8,9 @@ import questionList from "./questions/content.json";
 import { saveExperimentResult } from "./WizardActions";
 
 export default function Wizard() {
+  const experimentIdRef = useRef(uuidv4());
+  const experimentId = experimentIdRef.current;
+
   const [step, setStep] = useState(0);
   const [isDone, setIsDone] = useState(false);
   const version = useQueryParam("ver");
@@ -29,17 +33,14 @@ export default function Wizard() {
     ),
   );
 
-  const [experimentId, setExperimentId] = useState<string | undefined>(
-    undefined,
-  );
   async function onComplete() {
     setIsDone(true);
-    const id = await saveExperimentResult(
+    await saveExperimentResult(
+      experimentId,
       extraGuidance ? "prescriptive" : "descriptive",
       questions.map((q) => ({ id: q.id, answer: q.answer })),
       startTime!,
     );
-    setExperimentId(id);
   }
 
   function start() {

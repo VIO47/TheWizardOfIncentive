@@ -1,13 +1,12 @@
 import { db } from "./firebase";
-import { addDoc, collection } from "firebase/firestore";
-import { v4 as uuidv4 } from "uuid";
+import { setDoc, doc } from "firebase/firestore";
 
 async function saveExperimentResult(
+  experimentId: string,
   experimentType: "descriptive" | "prescriptive",
   questions: { id: number; answer?: string | string[] }[],
   startTime: Date,
 ) {
-  const experimentId = uuidv4();
   const payload = {
     experimentId,
     experimentType,
@@ -20,12 +19,10 @@ async function saveExperimentResult(
   };
 
   try {
-    await addDoc(collection(db, "experiments"), payload);
+    await setDoc(doc(db, "experiments", experimentId), payload);
     console.log("Done saving experiment result:", payload);
   } catch (e) {
     console.error(e);
   }
-
-  return experimentId;
 }
 export { saveExperimentResult };

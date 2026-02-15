@@ -12,8 +12,8 @@ export default function WizardSummary({
   return (
     <div className="wizard-summary">
       <h3>
-        Thank you for participating in the study! Your answer ID is{" "}
-        {experimentId}
+        Thank you for participating in the study! Your answer ID is <br />
+        <span className="experiment-id">{experimentId}</span>
       </h3>
       <p>
         Please fill in <a href={formLink}>this form</a> to complete your
