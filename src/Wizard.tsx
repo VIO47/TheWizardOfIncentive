@@ -34,12 +34,17 @@ export default function Wizard() {
   );
 
   async function onComplete() {
+    console.log("Start complete");
+
     await saveExperimentResult(
       experimentId,
       extraGuidance ? "prescriptive" : "descriptive",
       questions.map((q) => ({ id: q.id, answer: q.answer })),
       startTime!,
     );
+
+    console.log("Save finished");
+
     setIsDone(true);
   }
 

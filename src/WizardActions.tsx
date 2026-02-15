@@ -18,13 +18,8 @@ async function saveExperimentResult(
     })),
   };
 
-  try {
-    console.log("Saving experiment result:", experimentId);
-    await setDoc(doc(db, "experiments", experimentId), payload);
-    console.log("Done saving experiment result:", payload);
-  } catch (e) {
-    console.error(e);
-  }
-  console.log("DONE");
+  setDoc(doc(db, "experiments", experimentId), payload)
+    .then(() => console.log("Write resolved"))
+    .catch((err) => console.error("Write error", err));
 }
 export { saveExperimentResult };
