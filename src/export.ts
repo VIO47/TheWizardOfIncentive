@@ -24,9 +24,25 @@ async function exportExperimentsToExcel() {
       experimentType: data.experimentType,
       startTime: formatDate(data.startTime?.toDate?.()),
       endTime: formatDate(data.endTime?.toDate?.()),
+      duration : data.startTime && data.endTime
+        ? Math.round(
+            (data.endTime.toDate().getTime() - data.startTime.toDate().getTime()) / 1000,
+          )
+        : "",
       ...flatAnswers,
     };
   });
+
+  const allRows = rows;
+
+const descriptiveRows = rows.filter(
+  (r) => r.experimentType === "descriptive"
+);
+
+const prescriptiveRows = rows.filter(
+  (r) => r.experimentType === "prescriptive"
+);
+
 
   // Convert to Excel
 const worksheet = XLSX.utils.json_to_sheet(rows);
@@ -83,7 +99,9 @@ worksheet["!cols"] = headers.map((_, index) => {
 
 
 const workbook = XLSX.utils.book_new();
-XLSX.utils.book_append_sheet(workbook, worksheet, "Experiments");
+createStyledSheet(allRows, "All", workbook);
+createStyledSheet(descriptiveRows, "Descriptive", workbook);
+createStyledSheet(prescriptiveRows, "Prescriptive", workbook);
 
 // Generate binary Excel file
 const excelBuffer = XLSX.write(workbook, {
@@ -126,5 +144,35 @@ function formatDate(date: Date | undefined) {
   return `${day}/${month}/${year} ${hours}:${minutes}`;
 }
 
+function createStyledSheet(data: any[], sheetName: string, workbook: XLSX.WorkBook) {
+  if (data.length === 0) return;
+
+  const ws = XLSX.utils.json_to_sheet(data);
+
+  const headers = Object.keys(data[0]);
+
+  // Header styling
+  headers.forEach((_, colIndex) => {
+    const cellAddress = XLSX.utils.encode_cell({ r: 0, c: colIndex });
+    if (!ws[cellAddress]) return;
+
+    ws[cellAddress].s = {
+      font: { bold: true, color: { rgb: "FFFFFF" } },
+      fill: { fgColor: { rgb: "4472C4" } },
+      alignment: {
+        horizontal: "center",
+        vertical: "center",
+        wrapText: true,
+      },
+    };
+  });
+
+  ws["!cols"] = headers.map((_, index) => {
+    if (index >= 1 && index <= 3) return { wch: 15 };
+    return { wch: 30 };
+  });
+
+  XLSX.utils.book_append_sheet(workbook, ws, sheetName);
+}
 
 export { exportExperimentsToExcel };
