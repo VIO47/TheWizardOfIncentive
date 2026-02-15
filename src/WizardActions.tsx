@@ -1,5 +1,5 @@
 import { db } from "./firebase";
-import { setDoc, doc } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
 
 async function saveExperimentResult(
@@ -7,7 +7,6 @@ async function saveExperimentResult(
   questions: { id: number; answer?: string | string[] }[],
   startTime: Date,
 ) {
-  const experimentRunId = uuidv4();
   const experimentId = uuidv4();
   const payload = {
     experimentId,
@@ -20,8 +19,12 @@ async function saveExperimentResult(
     })),
   };
 
-  console.log("Saving experiment result:", payload);
-  await setDoc(doc(db, "experiments", experimentRunId), payload);
+  try {
+    await addDoc(collection(db, "experiments"), payload);
+  } catch (e) {
+    console.error(e);
+  }
+
   return experimentId;
 }
 export { saveExperimentResult };
