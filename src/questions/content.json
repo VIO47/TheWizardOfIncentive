@@ -314,7 +314,7 @@
     },
     {
         "id": 23,
-        "type": "text",
+        "type": "money",
         "step": 14, 
         "text": "What sum will you substract as penalty?",
         "extra": "Limit penalties so they remain proportional to the task's base pay and bonuses. Penalties should deter unwanted behavior without becoming harmful.",
